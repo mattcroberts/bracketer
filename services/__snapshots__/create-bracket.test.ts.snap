@@ -1,0 +1,314 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createBracket should create a bracket from ["A", "B", "C", "D", "E", "F", "G", "H", "I"] 1`] = `
+Object {
+  "a": Object {
+    "a": Object {
+      "a": Object {
+        "team": "A",
+      },
+      "b": Object {
+        "team": "B",
+      },
+      "stageName": "",
+      "team": undefined,
+    },
+    "b": Object {
+      "a": Object {
+        "team": "C",
+      },
+      "b": Object {
+        "team": "D",
+      },
+      "stageName": "",
+      "team": undefined,
+    },
+    "stageName": "",
+    "team": undefined,
+  },
+  "b": Object {
+    "a": Object {
+      "a": Object {
+        "team": "E",
+      },
+      "b": Object {
+        "team": "F",
+      },
+      "stageName": "",
+      "team": undefined,
+    },
+    "b": Object {
+      "a": Object {
+        "team": "G",
+      },
+      "b": Object {
+        "a": Object {
+          "team": "H",
+        },
+        "b": Object {
+          "team": "I",
+        },
+        "stageName": "",
+        "team": undefined,
+      },
+      "stageName": "",
+      "team": undefined,
+    },
+    "stageName": "",
+    "team": undefined,
+  },
+  "stageName": "",
+  "team": undefined,
+}
+`;
+
+exports[`createBracket should create a bracket from ["A", "B", "C", "D", "E", "F", "G", "H"] 1`] = `
+Object {
+  "a": Object {
+    "a": Object {
+      "a": Object {
+        "team": "A",
+      },
+      "b": Object {
+        "team": "B",
+      },
+      "stageName": "",
+      "team": undefined,
+    },
+    "b": Object {
+      "a": Object {
+        "team": "C",
+      },
+      "b": Object {
+        "team": "D",
+      },
+      "stageName": "",
+      "team": undefined,
+    },
+    "stageName": "",
+    "team": undefined,
+  },
+  "b": Object {
+    "a": Object {
+      "a": Object {
+        "team": "E",
+      },
+      "b": Object {
+        "team": "F",
+      },
+      "stageName": "",
+      "team": undefined,
+    },
+    "b": Object {
+      "a": Object {
+        "team": "G",
+      },
+      "b": Object {
+        "team": "H",
+      },
+      "stageName": "",
+      "team": undefined,
+    },
+    "stageName": "",
+    "team": undefined,
+  },
+  "stageName": "",
+  "team": undefined,
+}
+`;
+
+exports[`createBracket should create a bracket from ["A", "B", "C", "D", "E", "F", "G"] 1`] = `
+Object {
+  "a": Object {
+    "a": Object {
+      "a": Object {
+        "team": "A",
+      },
+      "b": Object {
+        "team": "B",
+      },
+      "stageName": "",
+      "team": undefined,
+    },
+    "b": Object {
+      "a": Object {
+        "team": "C",
+      },
+      "b": Object {
+        "team": "D",
+      },
+      "stageName": "",
+      "team": undefined,
+    },
+    "stageName": "",
+    "team": undefined,
+  },
+  "b": Object {
+    "a": Object {
+      "team": "E",
+    },
+    "b": Object {
+      "a": Object {
+        "team": "F",
+      },
+      "b": Object {
+        "team": "G",
+      },
+      "stageName": "",
+      "team": undefined,
+    },
+    "stageName": "",
+    "team": undefined,
+  },
+  "stageName": "",
+  "team": undefined,
+}
+`;
+
+exports[`createBracket should create a bracket from ["A", "B", "C", "D", "E", "F"] 1`] = `
+Object {
+  "a": Object {
+    "a": Object {
+      "team": "A",
+    },
+    "b": Object {
+      "team": "B",
+    },
+    "stageName": "",
+    "team": undefined,
+  },
+  "b": Object {
+    "a": Object {
+      "a": Object {
+        "team": "C",
+      },
+      "b": Object {
+        "team": "D",
+      },
+      "stageName": "",
+      "team": undefined,
+    },
+    "b": Object {
+      "a": Object {
+        "team": "E",
+      },
+      "b": Object {
+        "team": "F",
+      },
+      "stageName": "",
+      "team": undefined,
+    },
+    "stageName": "",
+    "team": undefined,
+  },
+  "stageName": "",
+  "team": undefined,
+}
+`;
+
+exports[`createBracket should create a bracket from ["A", "B", "C", "D", "E"] 1`] = `
+Object {
+  "a": Object {
+    "a": Object {
+      "team": "A",
+    },
+    "b": Object {
+      "team": "B",
+    },
+    "stageName": "",
+    "team": undefined,
+  },
+  "b": Object {
+    "a": Object {
+      "team": "C",
+    },
+    "b": Object {
+      "a": Object {
+        "team": "D",
+      },
+      "b": Object {
+        "team": "E",
+      },
+      "stageName": "",
+      "team": undefined,
+    },
+    "stageName": "",
+    "team": undefined,
+  },
+  "stageName": "",
+  "team": undefined,
+}
+`;
+
+exports[`createBracket should create a bracket from ["A", "B", "C", "D"] 1`] = `
+Object {
+  "a": Object {
+    "a": Object {
+      "team": "A",
+    },
+    "b": Object {
+      "team": "B",
+    },
+    "stageName": "",
+    "team": undefined,
+  },
+  "b": Object {
+    "a": Object {
+      "team": "C",
+    },
+    "b": Object {
+      "team": "D",
+    },
+    "stageName": "",
+    "team": undefined,
+  },
+  "stageName": "",
+  "team": undefined,
+}
+`;
+
+exports[`createBracket should create a bracket from ["A", "B", "C"] 1`] = `
+Object {
+  "a": Object {
+    "team": "A",
+  },
+  "b": Object {
+    "a": Object {
+      "team": "B",
+    },
+    "b": Object {
+      "team": "C",
+    },
+    "stageName": "",
+    "team": undefined,
+  },
+  "stageName": "",
+  "team": undefined,
+}
+`;
+
+exports[`createBracket should create a bracket from ["A", "B"] 1`] = `
+Object {
+  "a": Object {
+    "team": "A",
+  },
+  "b": Object {
+    "team": "B",
+  },
+  "stageName": "",
+  "team": undefined,
+}
+`;
+
+exports[`createBracket should create a bracket from ["A"] 1`] = `
+Object {
+  "a": Object {
+    "team": "A",
+  },
+  "b": Object {
+    "team": undefined,
+  },
+  "stageName": "",
+  "team": undefined,
+}
+`;

@@ -1,0 +1,49 @@
+{
+  "123": {
+    "name": "123",
+    "teams": ["a", "b", "c", "d", "e", "f", "g", "h", "i"],
+    "bracket": {
+      "stageName": "",
+      "a": {
+        "stageName": "",
+        "a": { "stageName": "", "a": { "team": "a" }, "b": { "team": "b" } },
+        "b": { "stageName": "", "a": { "team": "c" }, "b": { "team": "d" } }
+      },
+      "b": {
+        "stageName": "",
+        "a": { "stageName": "", "a": { "team": "e" }, "b": { "team": "f" } },
+        "b": {
+          "stageName": "",
+          "a": { "team": "g" },
+          "b": { "stageName": "", "a": { "team": "h" }, "b": { "team": "i" } }
+        }
+      }
+    }
+  },
+  "four": {
+    "name": "four",
+    "teams": ["A", "B", "C", "D"],
+    "bracket": {
+      "stageName": "",
+      "a": { "stageName": "", "a": { "team": "A" }, "b": { "team": "B" } },
+      "b": { "stageName": "", "a": { "team": "C" }, "b": { "team": "D" } }
+    }
+  },
+  "A-H": {
+    "name": "A-H",
+    "teams": ["A", "B", "C", "D", "E", "F", "G", "H"],
+    "bracket": {
+      "stageName": "",
+      "a": {
+        "stageName": "",
+        "a": { "stageName": "", "a": { "team": "A" }, "b": { "team": "B" } },
+        "b": { "stageName": "", "a": { "team": "C" }, "b": { "team": "D" } }
+      },
+      "b": {
+        "stageName": "",
+        "a": { "stageName": "", "a": { "team": "E" }, "b": { "team": "F" } },
+        "b": { "stageName": "", "a": { "team": "G" }, "b": { "team": "H" } }
+      }
+    }
+  }
+}
