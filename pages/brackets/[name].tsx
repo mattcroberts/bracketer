@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return { props: {} };
 };
-const Graph = dynamic(() =>
+const Graph = dynamic<{ bracket: BracketNode }>(() =>
   import("../../components/BracketGraph/BracketGraph").then(
     (mod) => mod.BracketGraph
   )

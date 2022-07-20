@@ -11,14 +11,16 @@ export const toPairs = <T>(items: T[]): [T, T][] => {
   if (items.length % 2) {
     return [
       ...p.slice(0, p.length - 2),
-      p[p.length - 2][0],
       [p[p.length - 2][1], p[p.length - 1][0]],
     ];
   }
 
   return p;
 };
-const pairPairs = <T>(items: T[]) => {
+
+type Recur<T> = T[] | Recur<T>[];
+
+const pairPairs = <T>(items: T[]): Recur<T> => {
   if (items.length > 2) {
     return pairPairs(toPairs(items));
   }
@@ -26,7 +28,7 @@ const pairPairs = <T>(items: T[]) => {
   return items;
 };
 
-const brackRecur = (paired: any, depth: number): Bracket => {
+const brackRecur = (paired: Recur<string>, depth: number): Bracket => {
   const a = Array.isArray(paired[0])
     ? brackRecur(paired[0], depth + 1)
     : undefined;
@@ -38,11 +40,17 @@ const brackRecur = (paired: any, depth: number): Bracket => {
     stageName: "",
     team: undefined,
     [Branch.A]: {
-      team: Array.isArray(paired) ? paired[0] : undefined,
+      team:
+        Array.isArray(paired) && typeof paired[0] === "string"
+          ? paired[0]
+          : undefined,
       ...a,
     },
     [Branch.B]: {
-      team: Array.isArray(paired) ? paired[1] : undefined,
+      team:
+        Array.isArray(paired) && typeof paired[1] === "string"
+          ? paired[1]
+          : undefined,
       ...b,
     },
   };

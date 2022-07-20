@@ -4,7 +4,11 @@ import { Bracket as BracketNode } from "../../services/types";
 import { calculateEdges } from "./calculateEdges";
 import { calculateNodes } from "./calculateNodes";
 
-export const BracketGraph: FC<{ bracket: BracketNode }> = ({ bracket }) => {
+export type Props = {
+  bracket: BracketNode;
+};
+
+export const BracketGraph: FC<Props> = ({ bracket }) => {
   return (
     <ReactFlow
       style={{ width: "100vh", height: "75vh" }}
