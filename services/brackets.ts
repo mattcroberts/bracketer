@@ -3,8 +3,8 @@ import { brackRecur, pairPairs, toPairs } from "./bracketUtils";
 import { Bracket } from "./types";
 
 const client = new fauna.Client({
-  secret: process.env.FAUNA_ADMIN_KEY,
-  domain: process.env.FAUNA_DB_DOMAIN,
+  secret: process.env.FAUNA_ADMIN_KEY as string,
+  domain: process.env.FAUNA_DB_DOMAIN as string,
 });
 
 export const createBracket = (teams: string[]): Bracket => {
@@ -30,9 +30,9 @@ export const addBracket = async (name: string, teams: Array<string>) => {
 
 export const getBracket = async (name: string) => {
   const q = fauna.query;
-  const { data } = await client.query(
-    q.Get(q.Match(q.Index("bracketByName"), name))
-  );
+  const { data } = await client.query<{
+    data: { bracketPairs: { teamA: string; teamB: string }[] };
+  }>(q.Get(q.Match(q.Index("bracketByName"), name)));
 
   const bracket = brackRecur(
     pairPairs(data.bracketPairs.map((pair) => [pair.teamA, pair.teamB])),

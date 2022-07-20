@@ -5,7 +5,7 @@ export enum Branch {
 
 export type Bracket = {
   stageName?: string;
-  team?: string;
+  team: string | null;
   [Branch.A]?: Bracket;
   [Branch.B]?: Bracket;
 };
