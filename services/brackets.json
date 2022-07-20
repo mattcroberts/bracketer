@@ -4,18 +4,18 @@
     "teams": ["a", "b", "c", "d", "e", "f", "g", "h", "i"],
     "bracket": {
       "stageName": "",
-      "a": {
+      "A": {
         "stageName": "",
-        "a": { "stageName": "", "a": { "team": "a" }, "b": { "team": "b" } },
-        "b": { "stageName": "", "a": { "team": "c" }, "b": { "team": "d" } }
+        "A": { "stageName": "", "A": { "team": "a" }, "B": { "team": "b" } },
+        "B": { "stageName": "", "A": { "team": "c" }, "B": { "team": "d" } }
       },
-      "b": {
+      "B": {
         "stageName": "",
-        "a": { "stageName": "", "a": { "team": "e" }, "b": { "team": "f" } },
-        "b": {
+        "A": { "stageName": "", "A": { "team": "e" }, "B": { "team": "f" } },
+        "B": {
           "stageName": "",
-          "a": { "team": "g" },
-          "b": { "stageName": "", "a": { "team": "h" }, "b": { "team": "i" } }
+          "A": { "team": "g" },
+          "B": { "stageName": "", "A": { "team": "h" }, "B": { "team": "i" } }
         }
       }
     }
@@ -25,8 +25,8 @@
     "teams": ["A", "B", "C", "D"],
     "bracket": {
       "stageName": "",
-      "a": { "stageName": "", "a": { "team": "A" }, "b": { "team": "B" } },
-      "b": { "stageName": "", "a": { "team": "C" }, "b": { "team": "D" } }
+      "A": { "stageName": "", "A": { "team": "A" }, "B": { "team": "B" } },
+      "B": { "stageName": "", "A": { "team": "C" }, "B": { "team": "D" } }
     }
   },
   "A-H": {
@@ -34,15 +34,15 @@
     "teams": ["A", "B", "C", "D", "E", "F", "G", "H"],
     "bracket": {
       "stageName": "",
-      "a": {
+      "A": {
         "stageName": "",
-        "a": { "stageName": "", "a": { "team": "A" }, "b": { "team": "B" } },
-        "b": { "stageName": "", "a": { "team": "C" }, "b": { "team": "D" } }
+        "A": { "stageName": "", "A": { "team": "A" }, "B": { "team": "B" } },
+        "B": { "stageName": "", "A": { "team": "C" }, "B": { "team": "D" } }
       },
-      "b": {
+      "B": {
         "stageName": "",
-        "a": { "stageName": "", "a": { "team": "E" }, "b": { "team": "F" } },
-        "b": { "stageName": "", "a": { "team": "G" }, "b": { "team": "H" } }
+        "A": { "stageName": "", "A": { "team": "E" }, "B": { "team": "F" } },
+        "B": { "stageName": "", "A": { "team": "G" }, "B": { "team": "H" } }
       }
     }
   }

@@ -1,5 +1,4 @@
 import { createBracket } from "./brackets";
-import { BRACKET2 } from "./fixture";
 
 describe("createBracket", () => {
   it.each([
@@ -14,7 +13,6 @@ describe("createBracket", () => {
     [["A", "B", "C", "D", "E", "F", "G", "H", "I"]],
   ])("should create a bracket from %p", (teams) => {
     console.log(teams);
-    const bracket = createBracket(teams);
 
     expect(createBracket(teams)).toMatchSnapshot();
   });

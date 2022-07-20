@@ -1,6 +1,6 @@
 import { FC } from "react";
-import ReactFlow, { Background, Controls } from "react-flow-renderer";
-import { Bracket as BracketNode } from "../../services/brackets";
+import ReactFlow, { Controls } from "react-flow-renderer";
+import { Bracket as BracketNode } from "../../services/types";
 import { calculateEdges } from "./calculateEdges";
 import { calculateNodes } from "./calculateNodes";
 

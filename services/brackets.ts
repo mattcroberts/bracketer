@@ -1,16 +1,5 @@
 import { readFileSync, writeFileSync } from "fs";
-
-export type Bracket = {
-  stageName?: string;
-  team?: string;
-  a?: Bracket;
-  b?: Bracket;
-};
-
-const BRACKETS: Record<
-  string,
-  { name: string; teams: Array<string>; bracket: Bracket }
-> = {};
+import { Bracket, Branch } from "./types";
 
 export const toPairs = <T>(items: T[]): [T, T][] => {
   const p: [T, T][] = [];
@@ -38,8 +27,6 @@ const pairPairs = <T>(items: T[]) => {
 };
 
 const brackRecur = (paired: any, depth: number): Bracket => {
-  const areLeafNodes = paired && paired.length === 1;
-
   const a = Array.isArray(paired[0])
     ? brackRecur(paired[0], depth + 1)
     : undefined;
@@ -50,11 +37,11 @@ const brackRecur = (paired: any, depth: number): Bracket => {
   return {
     stageName: "",
     team: undefined,
-    a: {
+    [Branch.A]: {
       team: Array.isArray(paired) ? paired[0] : undefined,
       ...a,
     },
-    b: {
+    [Branch.B]: {
       team: Array.isArray(paired) ? paired[1] : undefined,
       ...b,
     },

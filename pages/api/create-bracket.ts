@@ -6,10 +6,6 @@ const createBracket: NextApiHandler = async (req, res) => {
   const teams: string[] = Array.from(req.body.team);
 
   if (teamName && teams) {
-    const bracket = {
-      name: teamName,
-      teams: teams,
-    };
     addBracket(teamName, teams);
 
     return res.redirect(`/brackets/${teamName}`);

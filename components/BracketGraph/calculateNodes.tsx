@@ -1,5 +1,5 @@
 import { Node } from "react-flow-renderer";
-import { Bracket as BracketNode } from "../../services/brackets";
+import { Bracket as BracketNode, Branch } from "../../services/types";
 
 const calculateLabel = (depth: number, bracket: BracketNode, id: string) => {
   switch (depth) {
@@ -8,7 +8,7 @@ const calculateLabel = (depth: number, bracket: BracketNode, id: string) => {
     case 1:
       return "Semi-final " + id.charAt(id.length - 1).toUpperCase();
     default:
-      return `${bracket.a?.team || ""} vs ${bracket.b?.team || ""} `;
+      return `${bracket.A?.team || ""} vs ${bracket.B?.team || ""} `;
   }
 };
 export const calculateNodes = (
@@ -16,19 +16,19 @@ export const calculateNodes = (
   depth = 0,
   id = ""
 ): Node[] => {
-  const result = [];
+  const result = [];    
 
-  if (bracket.a?.a) {
-    result.push(...calculateNodes(bracket.a, depth + 1, id + "a"));
+  if (bracket.A?.A) {
+    result.push(...calculateNodes(bracket.A, depth + 1, id + Branch.A));
   }
 
-  if (bracket.b?.a) {
-    result.push(...calculateNodes(bracket.b, depth + 1, id + "b"));
+  if (bracket.B?.A) {
+    result.push(...calculateNodes(bracket.B, depth + 1, id + Branch.B));
   }
   const x = depth * 200;
 
   const multiplier = id.split("").reduce((count, letter, index) => {
-    const letterMultiplier = letter === "a" ? -1 : 1;
+    const letterMultiplier = letter === Branch.A ? -1 : 1;
 
     return count + letterMultiplier * (result.length / 2 + depth - index);
   }, 0);

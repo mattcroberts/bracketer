@@ -1,5 +1,10 @@
-import { Edge, MarkerType } from "react-flow-renderer";
-import { Bracket as BracketNode } from "../../services/brackets";
+import { Edge } from "react-flow-renderer";
+import { Bracket as BracketNode } from "../../services/types";
+
+const defaultProps = {
+  type: "step",
+  animated: true,
+};
 
 export const calculateEdges = (
   bracket: BracketNode,
@@ -7,30 +12,26 @@ export const calculateEdges = (
   id = ""
 ): Edge[] => {
   const result = [];
-  const type = "step";
-  if (bracket.a?.a) {
+
+  if (bracket.A?.A) {
     result.push({
+      ...defaultProps,
       id: `${depth}:${id}a`,
-      type,
-      animated: true,
       target: `${depth}:${id}`,
-      source: `${depth + 1}:${id}a`,
+      source: `${depth + 1}:${id}A`,
     });
-    result.push(...calculateEdges(bracket.a, depth + 1, id + "a"));
+    result.push(...calculateEdges(bracket.A, depth + 1, id + "A"));
   }
 
-  if (bracket.b?.a) {
+  if (bracket.B?.A) {
     result.push({
+      ...defaultProps,
       id: `${depth}:${id}b`,
-      type,
-      animated: true,
       target: `${depth}:${id}`,
-      source: `${depth + 1}:${id}b`,
+      source: `${depth + 1}:${id}B`,
     });
-    result.push(...calculateEdges(bracket.b, depth + 1, id + "b"));
+    result.push(...calculateEdges(bracket.B, depth + 1, id + "B"));
   }
-  const x = depth * 200;
-  const y = (id.match(/b/g) || []).length * 200;
 
   return result;
 };

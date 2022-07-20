@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 
-import { Bracket as BracketNode, getBracket } from "../../services/brackets";
+import { getBracket } from "../../services/brackets";
+import { Bracket as BracketNode } from "../../services/types";
 
 import dynamic from "next/dynamic";
 import styles from "./[name].module.css";
@@ -28,7 +29,7 @@ export default function Bracket({
     return null;
   }
 
-  const { name, teams, bracket: bracketNode } = bracket;
+  const { name, bracket: bracketNode } = bracket;
   return (
     <div className={styles.bracketPage}>
       <h1>{name} Bracket</h1>
