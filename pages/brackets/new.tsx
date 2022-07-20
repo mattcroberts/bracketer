@@ -3,7 +3,7 @@ import AddBracket from "../../components/forms/AddBracket/AddBracket";
 import styles from "./new.module.css";
 
 const NewBracketPage = () => {
-  const [noOfBrackets, setNoOfBrackets] = useState(1);
+  const [noOfBrackets, setNoOfBrackets] = useState(4);
   return (
     <div>
       <h1>New Bracket</h1>

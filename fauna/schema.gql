@@ -1,0 +1,19 @@
+type BracketContainer {
+  name: String! @unique
+  bracketPairs: [BracketPair!]!
+}
+
+type BracketPair @embedded {
+  #   stageName: String
+  #   winner: String
+  teamA: String!
+  teamB: String!
+}
+
+type Query {
+  bracketByName(name: String!): BracketContainer
+}
+
+type Mutation {
+
+}

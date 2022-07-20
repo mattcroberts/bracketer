@@ -1,60 +1,11 @@
-import { readFileSync, writeFileSync } from "fs";
-import { Bracket, Branch } from "./types";
+import fauna from "faunadb";
+import { brackRecur, pairPairs, toPairs } from "./bracketUtils";
+import { Bracket } from "./types";
 
-export const toPairs = <T>(items: T[]): [T, T][] => {
-  const p: [T, T][] = [];
-
-  for (let i = 0; i < items.length; i += 2) {
-    p.push([items[i], items[i + 1]]);
-  }
-
-  if (items.length % 2) {
-    return [
-      ...p.slice(0, p.length - 2),
-      [p[p.length - 2][1], p[p.length - 1][0]],
-    ];
-  }
-
-  return p;
-};
-
-type Recur<T> = T[] | Recur<T>[];
-
-const pairPairs = <T>(items: T[]): Recur<T> => {
-  if (items.length > 2) {
-    return pairPairs(toPairs(items));
-  }
-
-  return items;
-};
-
-const brackRecur = (paired: Recur<string>, depth: number): Bracket => {
-  const a = Array.isArray(paired[0])
-    ? brackRecur(paired[0], depth + 1)
-    : undefined;
-  const b = Array.isArray(paired[1])
-    ? brackRecur(paired[1], depth + 1)
-    : undefined;
-
-  return {
-    stageName: "",
-    team: undefined,
-    [Branch.A]: {
-      team:
-        Array.isArray(paired) && typeof paired[0] === "string"
-          ? paired[0]
-          : undefined,
-      ...a,
-    },
-    [Branch.B]: {
-      team:
-        Array.isArray(paired) && typeof paired[1] === "string"
-          ? paired[1]
-          : undefined,
-      ...b,
-    },
-  };
-};
+const client = new fauna.Client({
+  secret: process.env.FAUNA_ADMIN_KEY,
+  domain: process.env.FAUNA_DB_DOMAIN,
+});
 
 export const createBracket = (teams: string[]): Bracket => {
   const pairs = pairPairs(teams);
@@ -62,14 +13,31 @@ export const createBracket = (teams: string[]): Bracket => {
   return brackRecur(pairs, 0);
 };
 
-export const addBracket = (name: string, teams: Array<string>) => {
-  const b = JSON.parse(readFileSync("./services/brackets.json").toString());
-  b[name] = { name, teams, bracket: createBracket(teams) };
-  writeFileSync("./services/brackets.json", JSON.stringify(b));
+export const addBracket = async (name: string, teams: Array<string>) => {
+  const q = fauna.query;
+  await client.query(
+    q.Create(q.Collection("BracketContainer"), {
+      data: {
+        name,
+        bracketPairs: toPairs(teams).map(([teamA, teamB]) => ({
+          teamA,
+          teamB,
+        })),
+      },
+    })
+  );
 };
 
-export const getBracket = (name: string) => {
-  const b = JSON.parse(readFileSync("./services/brackets.json").toString());
+export const getBracket = async (name: string) => {
+  const q = fauna.query;
+  const { data } = await client.query(
+    q.Get(q.Match(q.Index("bracketByName"), name))
+  );
 
-  return b[name];
+  const bracket = brackRecur(
+    pairPairs(data.bracketPairs.map((pair) => [pair.teamA, pair.teamB])),
+    0
+  );
+
+  return bracket;
 };

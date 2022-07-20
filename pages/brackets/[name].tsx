@@ -8,9 +8,9 @@ import styles from "./[name].module.css";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   if (context.params?.name) {
-    const bracket = getBracket(context.params.name as string); // TODO
+    const bracket = await getBracket(context.params.name as string); // TODO
 
-    return { props: { bracket } };
+    return { props: { bracket: { bracket } } };
   }
 
   return { props: {} };

@@ -10,13 +10,15 @@ export type Props = {
 
 export const BracketGraph: FC<Props> = ({ bracket }) => {
   return (
-    <ReactFlow
-      style={{ width: "100vh", height: "75vh" }}
-      nodes={calculateNodes(bracket)}
-      edges={calculateEdges(bracket)}
-      fitView
-    >
-      <Controls />
-    </ReactFlow>
+    bracket && (
+      <ReactFlow
+        style={{ width: "100vh", height: "75vh" }}
+        nodes={calculateNodes(bracket)}
+        edges={calculateEdges(bracket)}
+        fitView
+      >
+        <Controls />
+      </ReactFlow>
+    )
   );
 };
