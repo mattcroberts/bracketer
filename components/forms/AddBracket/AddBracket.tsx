@@ -1,8 +1,10 @@
+import { InputWrapper, TextInput } from "@mantine/core";
+
 const AddBracket = () => {
   return (
-    <label>
-      Team <input name="team" />
-    </label>
+    <InputWrapper>
+      <TextInput name="team" placeholder="Team name" />
+    </InputWrapper>
   );
 };
 
