@@ -24,12 +24,12 @@ export const pairPairs = <T>(items: T[]): Recur<T> => {
 
   return items;
 };
-export const brackRecur = (paired: Recur<string>, depth: number): Bracket => {
+export const bracketRecur = (paired: Recur<string>, depth: number): Bracket => {
   const a = Array.isArray(paired[0])
-    ? brackRecur(paired[0], depth + 1)
+    ? bracketRecur(paired[0], depth + 1)
     : undefined;
   const b = Array.isArray(paired[1])
-    ? brackRecur(paired[1], depth + 1)
+    ? bracketRecur(paired[1], depth + 1)
     : undefined;
 
   return {

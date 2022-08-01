@@ -1,5 +1,5 @@
 import fauna from "faunadb";
-import { brackRecur, pairPairs, toPairs } from "./bracketUtils";
+import { bracketRecur, pairPairs, toPairs } from "./bracketUtils";
 import { Bracket } from "./types";
 
 const client = new fauna.Client({
@@ -10,7 +10,7 @@ const client = new fauna.Client({
 export const createBracket = (teams: string[]): Bracket => {
   const pairs = pairPairs(teams);
 
-  return brackRecur(pairs, 0);
+  return bracketRecur(pairs, 0);
 };
 
 export const addBracket = async (name: string, teams: Array<string>) => {
@@ -34,7 +34,7 @@ export const getBracket = async (name: string) => {
     data: { bracketPairs: { teamA: string; teamB: string }[] };
   }>(q.Get(q.Match(q.Index("bracketByName"), name)));
 
-  const bracket = brackRecur(
+  const bracket = bracketRecur(
     pairPairs(data.bracketPairs.map((pair) => [pair.teamA, pair.teamB])),
     0
   );
