@@ -1,5 +1,6 @@
+import { useViewportSize } from "@mantine/hooks";
 import { FC } from "react";
-import ReactFlow, { Controls } from "react-flow-renderer";
+import ReactFlow from "react-flow-renderer";
 import { Bracket as BracketNode } from "../../services/types";
 import { calculateEdges } from "./calculateEdges";
 import { calculateNodes } from "./calculateNodes";
@@ -9,16 +10,16 @@ export type Props = {
 };
 
 export const BracketGraph: FC<Props> = ({ bracket }) => {
+  const { height, width } = useViewportSize();
+
   return (
     bracket && (
       <ReactFlow
-        style={{ width: "100vh", height: "75vh" }}
+        style={{ height: height / 2, width: Math.min(960, width - 80) }}
         nodes={calculateNodes(bracket)}
         edges={calculateEdges(bracket)}
         fitView
-      >
-        <Controls />
-      </ReactFlow>
+      ></ReactFlow>
     )
   );
 };

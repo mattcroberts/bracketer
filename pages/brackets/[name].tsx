@@ -1,10 +1,10 @@
 import { GetServerSideProps } from "next";
+import dynamic from "next/dynamic";
 
 import { getBracket } from "../../services/brackets";
 import { Bracket as BracketNode } from "../../services/types";
 
 import { Title } from "@mantine/core";
-import { BracketGraph } from "../../components/BracketGraph/BracketGraph";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   if (context.params?.name) {
@@ -16,6 +16,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return { props: {} };
 };
 
+const BracketGraph = dynamic<{ bracket: BracketNode }>(
+  () =>
+    import("../../components/BracketGraph/BracketGraph").then(
+      (mod) => mod.BracketGraph
+    ),
+  { ssr: false }
+);
+
 export default function Bracket({
   bracket,
 }: {
@@ -26,6 +34,7 @@ export default function Bracket({
   }
 
   const { name, bracket: bracketNode } = bracket;
+
   return (
     <>
       <Title>{name} Bracket</Title>
