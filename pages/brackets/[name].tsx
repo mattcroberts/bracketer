@@ -6,16 +6,6 @@ import { Bracket as BracketNode } from "../../services/types";
 
 import { Title } from "@mantine/core";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  if (context.params?.name) {
-    const bracket = await getBracket(context.params.name as string); // TODO
-
-    return { props: { bracket: { bracket } } };
-  }
-
-  return { props: {} };
-};
-
 const BracketGraph = dynamic<{ bracket: BracketNode }>(
   () =>
     import("../../components/BracketGraph/BracketGraph").then(
@@ -23,6 +13,20 @@ const BracketGraph = dynamic<{ bracket: BracketNode }>(
     ),
   { ssr: false }
 );
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  if (context.params?.name) {
+    try {
+      const bracket = await getBracket(context.params.name as string); // TODO
+
+      return { props: { bracket: { bracket } } };
+    } catch (e) {
+      return { notFound: true };
+    }
+  }
+
+  return { props: {} };
+};
 
 export default function Bracket({
   bracket,
